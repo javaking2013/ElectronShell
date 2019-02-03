@@ -6,8 +6,31 @@ const { Menu, MenuItem } = remote;
     document.onreadystatechange = () => {
         if (document.readyState == "complete") {
             init();
+            createClickMenu();
         }
     };
+
+    function createClickMenu(){
+        const menu = new Menu()
+        menu.append(new MenuItem({
+            label: 'Open Dev Tools', click(){
+                remote.getCurrentWindow().webContents.openDevTools()
+            }
+        }))
+        menu.append(new MenuItem({ type: 'separator' }))
+        menu.append(new MenuItem({
+            label: 'Does Nothing',
+            type: 'checkbox',
+            checked: true
+        }))
+
+        window.addEventListener('contextmenu', (e) => {
+            e.preventDefault()
+            menu.popup({
+                window: remote.getCurrentWindow()
+            }, false)
+        })
+    }
 
     function init() {
         let window = remote.getCurrentWindow();
