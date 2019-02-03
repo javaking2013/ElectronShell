@@ -2,9 +2,9 @@
   "name": "ElectronShell",
   "version": "1.0.0",
   "description": "This is a shell electron project that includes all of the boilerplate code beyond an empty project.",
-  "main": "index.js",
+  "main": "src/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "electron ."
   },
   "repository": {
     "type": "git",
